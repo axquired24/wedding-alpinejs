@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Style+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap");
+.font-custom-style-script {
+  font-family: "Style Script", cursive;
+}
+
+.font-custom-tangerine {
+  font-family: "Tangerine", cursive;
+}
+
+.bg-cream-100 {
+  background-color: #F2F2F2;
+}
+
+.text-cream-100 {
+  color: #F2F2F2;
+}
+
+.border-cream-100 {
+  border-color: #F2F2F2;
+}
+
+.bg-cream-900 {
+  background-color: #888;
+}
+
+.text-cream-900 {
+  color: #888;
+}
+
+.border-cream-900 {
+  border-color: #888;
+}
+
+.text-grey-400 {
+  color: #474747;
+}
+
+.border-cream-300 {
+  border-color: #C0B0A3;
+}
+
+.bg-cream-300 {
+  background-color: #C0B0A3;
+}
+
+.text-cream-300 {
+  color: #C0B0A3;
+}
+
+.text-cream-200 {
+  color: #705743;
+}
+
+.flip-flower-top {
+  transform: scaleX(-1) rotate(45deg);
+}
+
+.flip-flower-bottom {
+  transform: scaleX(-1) rotate(-45deg);
+}
+
+#flower {
+  -webkit-animation: rotation 2s infinite linear;
+}
+
+.snap {
+  -ms-scroll-snap-type: x mandatory;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+}
+
+.snap::-webkit-scrollbar {
+  display: none;
+}
+
+.snap > div {
+  scroll-snap-align: center;
+}
+
+@-webkit-keyframes rotation {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(30deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+  }
+}
+
+/*# sourceMappingURL=custom-style.css.map */

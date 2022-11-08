@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Style+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap");
+
+$cream-100: #F2F2F2;
+$cream-900: #888;
+$cream-200: #705743;
+$cream-300: #C0B0A3;
+$grey-400: #474747;
+
+.font-custom-style-script {
+  font-family: "Style Script", cursive;
+}
+.font-custom-tangerine {
+  font-family: "Tangerine", cursive;
+}
+
+.bg-cream-100 {
+  background-color: $cream-100;
+}
+.text-cream-100 {
+  color: $cream-100;
+}
+.border-cream-100 {
+  border-color: $cream-100;
+}
+
+.bg-cream-900 {
+  background-color: $cream-900;
+}
+.text-cream-900 {
+  color: $cream-900;
+}
+.border-cream-900 {
+  border-color: $cream-900;
+}
+
+.text-grey-400 {
+  color: $grey-400;
+}
+
+.border-cream-300 {
+border-color: $cream-300;
+}
+.bg-cream-300 {
+background-color: $cream-300;
+}
+.text-cream-300 {
+  color: $cream-300;
+}
+.text-cream-200 {
+  color: $cream-200;
+}
+
+
+.flip-flower-top {
+  transform: scaleX(-1) rotate(45deg);
+}
+.flip-flower-bottom {
+  transform: scaleX(-1) rotate(-45deg);
+}
+
+#flower {
+  -webkit-animation: rotation 2s infinite linear;
+}
+
+.snap {
+  -ms-scroll-snap-type: x mandatory;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth
+}
+.snap::-webkit-scrollbar {
+  display: none;
+}
+
+.snap > div {
+  scroll-snap-align: center;
+}
+
+@-webkit-keyframes rotation {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(30deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+  }
+}
