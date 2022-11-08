@@ -1,7 +1,43 @@
-// const baseUrl = "https://retoolapi.dev/DcJllE/guests";
 const axiosConfig = {}
 
 const Aksi = {};
+
+Aksi.rootVariable = () => {
+    const weddingDate = '12 November 2022'
+    return {
+        weddingDay: 'Sabtu, ' + weddingDate,
+        weddingDate,
+        calendarLink: 'https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=MGdodGhlMjllY3I0Yjg5dG12cmhwZGk2NW4gYWxiZXJ0c2VwdGlhd2FuMjRAbQ&tmsrc=albertseptiawan24%40gmail.com',
+        albertMap: 'https://goo.gl/maps/KQyLhmtL5GR8dT379',
+        farahMap: 'https://goo.gl/maps/48G2MGfu6354ZpQ69',
+        farahMapEmbed: 'https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=-5.417732,%20104.736017+(Resepsi%20Farah%20Albert)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed'
+    }
+}
+
+Aksi.playSong = () => {
+    document.getElementById('song').play();
+}
+
+Aksi.pauseSong = () => {
+    document.getElementById('song').pause();
+}
+
+Aksi.musicMethod = () => {
+    return {
+        isMusicPlay: true,
+        togglePlay: function() {
+            this.isMusicPlay ? Aksi.pauseSong() : Aksi.playSong();
+            this.isMusicPlay = ! this.isMusicPlay;
+        },
+        musicIcon: 'text-3xl fas ',
+        playIcon: function() {
+            return this.musicIcon + 'fa-play-circle';
+        },
+        pauseIcon: function() {
+            return this.musicIcon + 'fa-pause-circle';
+        }
+    }
+}
 
 Aksi.timeDifference = (previous, current=null) => {
 
@@ -41,44 +77,6 @@ Aksi.timeDifference = (previous, current=null) => {
     else {
         return Math.round(elapsed/msPerYear ) + ' tahun lalu';
     }
-}
-
-Aksi.postGreeting = async (name, text) => {
-    try {
-        const reqData = {
-            name: name,
-            greeting: text,
-            // ts: new Date().valueOf(),
-            ts: new Date(),
-        }
-
-        const responseData = await axios.post(baseUrl + '/api/greeting', reqData, axiosConfig);
-        alert("Terimakasih atas doa/ucapannya!");
-        return responseData.data;
-    } catch (e) {
-        console.log(e);
-        alert("Ucapan tidak terkirim.");
-    }
-}
-
-Aksi.getGreeting = async () => {
-    try {
-        const responseData = await axios.get(baseUrl + '/api/greeting');
-        console.log(responseData.response);
-        return responseData.data;
-    } catch (e) {
-        console.log(e);
-        alert("Gagal dapat data.");
-        return [];
-    }
-}
-
-Aksi.playSong = () => {
-    document.getElementById('song').play();
-}
-
-Aksi.pauseSong = () => {
-    document.getElementById('song').pause();
 }
 
 Aksi.welcomeModal = () => {
@@ -163,7 +161,7 @@ Aksi.galleryPhotos = () => {
                 // 'k',
                 'l'
             ];
-            photos = photos.map((item) => baseUrl + '/photos/' + item + '.jpg');
+            photos = photos.map((item) => '/assets/photos/' + item + '.jpg');
             this.galleries = photos;
         },
         doPrev() {

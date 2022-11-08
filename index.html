@@ -10,17 +10,372 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/assets/styles/custom-style.css">
 </head>
-<body>
-    <div class="text-center mt-5">
-        <a href="https://calendar.google.com/event?action=TEMPLATE&tmeid=M2lhaDdlZTAyOTBsN3ExbWU4Y3JwcjRndTggYWxiZXJ0c2VwdGlhd2FuMjRAbQ&tmsrc=albertseptiawan24%40gmail.com"
-            target="_blank"
-            class="border-yellow-500 text-yellow-500 border-2 transition-all duration-200 ease-in-out hover:text-white hover:bg-yellow-500 hover:shadow-md px-4 py-2 rounded-md text-xs">
-            <i class="fa fa-calendar"></i> Simpan di Kalender
+<body
+    x-data="Aksi.rootVariable()"
+    class="min-h-screen bg-cream-100 text-gray-700 overflow-x-hidden m-0 p-0">
+    <!--  Navigation Menu  -->
+    <div
+        class="w-full flex gap-10 justify-center bg-cream-900 shadow-lg h-16 py-5 z-10 fixed bottom-0 right-0"
+        x-data="Aksi.musicMethod()"
+        >
+        <!-- x-init="togglePlay()" -->
+
+        <a href="#BrideGroom" class="text-cream-100 hover:text-yellow-400">
+            <i class="fa fa-restroom text-3xl"></i>
+            <!-- <i class="fa fa-fan fa-spin text-3xl"></i> -->
         </a>
+        <!-- <a href="#BrideGroom" class="text-cream-100 hover:text-yellow-400">
+            <i class="fas fa-restroom text-3xl"></i>
+        </a> -->
+        <a href="#Photo" class="text-cream-100 hover:text-yellow-400">
+            <i class="fas fa-images text-3xl"></i>
+        </a>
+        <a href="javascript://" class="text-cream-100 hover:text-yellow-400"
+            x-on:click="togglePlay()">
+            <i x-bind:class="! isMusicPlay ? playIcon() : pauseIcon()"></i>
+        </a>
+        <a href="#Location" class="text-cream-100 hover:text-yellow-400">
+            <i class="fas fa-map-marker-alt text-3xl"></i>
+        </a>
+        <a href="#Greeting" class="text-cream-100 hover:text-yellow-400">
+            <i class="fas fa-comments text-3xl"></i>
+        </a>
+    </div>
+    <!--  END Navigation Menu  -->
+
+    <div class="page-wrapper flex justify-center w-full">
+        <div class="w-full lg:w-4/6 px-10">
+            <!-- @TODO(show music) -->
+            <div class="music hidden">
+                <audio id="song" loop>
+                    <source
+                        src="/assets/musics/beautiful-in-white-canon-d.mp3"
+                        type="audio/mp3" />
+                </audio>
+            </div>
+
+            <div id="Home" class="py-10 mb-12">
+
+                <div class="bg-white relative border-cream-300 bg-cream-100 border-8 rounded-lg shadow-sm mt-5 p-8">
+                    <img class="absolute left-0 top-0 w-24 -mt-10 -ml-8 transform rotate-45"
+                        src="/assets/images/floral_eve.png" />
+
+                    <img class="absolute right-0 top-0 w-24 -mt-10 -mr-8 flip-flower-top"
+                        src="/assets/images/floral_eve.png" />
+
+                    <h3 class="text-4xl text-center font-custom-style-script">The Wedding of</h3>
+                    <div class="text-center" x-text="weddingDate"></div>
+
+                    <div class="font-custom-tangerine font-bold text-6xl text-center text-cream-200 text-shadow-md mt-10">
+                        Farah <div class="animate-bounce">&</div> Albert
+                    </div>
+
+                    <div class="text-center mt-5">
+                        <a :href="calendarLink"
+                            target="_blank"
+                            class="border-yellow-500 text-yellow-500 border-2 transition-all duration-200 ease-in-out hover:text-white hover:bg-yellow-500 hover:shadow-md px-4 py-2 rounded-md text-xs">
+                            <i class="fa fa-calendar"></i> Simpan di Kalender
+                        </a>
+                    </div>
+
+                </div>
+                <!--  End Card  -->
+
+                <div class="mt-5">
+
+                    <div class="grid grid-cols-4 gap-3 mb-5">
+                        <div class="w-full border-black border-t-2 mt-3"></div>
+                        <div class="text-center col-span-2">WITH GREAT PLEASURE</div>
+                        <div class="w-full border-black border-t-2 mt-3"></div>
+                    </div>
+
+                    <div class="flex justify-center">
+                        <img src="https://i.ibb.co/9NfhmCQ/bismillah-38262.png" class="px-10 h-10 w-auto" alt="Bismillah" />
+                    </div>
+
+                    <div class="text-justify text-md mt-5">
+                        Sesungguhnya hati ini telah terhimpun dalam cinta dan bertemu dalam taat kepada Mu. Eratkanlah
+                        ikatannya, kekalkanlah kasih sayangnya, berkahilah jalannya dan penuhilah hati ini dengan cahaya Mu
+                        yang tak pernah pudar Rasa haru dan bahagia terukir dihati kami atas limpahan Rahmat Allah SWT dan
+                        kami bersimpuh memohon Ridho Nya untuk melangsungkan resepsi pernikahan putra – putri kami
+                    </div>
+
+                    <div class="mt-5 text-center">
+                        <div class="font-custom-tangerine font-bold text-5xl text-cream-200">
+                            Eva Farahdiba Meiza
+                        </div>
+                        <div class="font-bold text-sm">Putri Pertama</div>
+                        <div class="text-sm">Bp. Wahyudin & Ibu Rita Suryani</div>
+
+                        <!--        <div class="flex justify-center gap-4 mt-2">
+               <a href="javascript://" class="rounded-full px-2 py-1 bg-yellow-500 hover:bg-yellow-600 text-white"><i class="fab fa-facebook"></i></a>
+               <a href="javascript://" class="rounded-full px-2 py-1 bg-yellow-500 hover:bg-yellow-600 text-white"><i class="fab fa-instagram"></i></a>
+               <a href="javascript://" class="rounded-full px-2 py-1 bg-yellow-500 hover:bg-yellow-600 text-white"><i class="fab fa-twitter"></i></a>
+             </div> -->
+                    </div>
+                    <!--  End Nama Mempelai     -->
+
+                    <div class="mt-10 text-center">
+                        <div class="font-custom-tangerine font-bold text-5xl text-cream-200">
+                            Albert Septiawan
+                        </div>
+                        <div class="font-bold text-sm">Putra Kedua</div>
+                        <div class="text-sm">Bp. Bernadi & Ibu Umi Soleha</div>
+
+                        <!--        <div class="flex justify-center gap-4 mt-2">
+               <a href="javascript://" class="rounded-full px-2 py-1 bg-yellow-500 hover:bg-yellow-600 text-white"><i class="fab fa-facebook"></i></a>
+               <a href="javascript://" class="rounded-full px-2 py-1 bg-yellow-500 hover:bg-yellow-600 text-white"><i class="fab fa-instagram"></i></a>
+               <a href="javascript://" class="rounded-full px-2 py-1 bg-yellow-500 hover:bg-yellow-600 text-white"><i class="fab fa-twitter"></i></a>
+             </div> -->
+                    </div>
+                    <!--  End Nama Mempelai     -->
+                </div>
+                <!--  End Card  -->
+
+                <div id="BrideGroom" class="pt-10">
+                    <div class="grid grid-cols-4 gap-3 mb-5">
+                        <div class="w-full border-black border-t-2 mt-3"></div>
+                        <div class="text-center col-span-2">AGENDA</div>
+                        <div class="w-full border-black border-t-2 mt-3"></div>
+                    </div>
+                </div>
+                <!--  END DIVIDER  -->
+
+                <div class="bg-white relative border-cream-300 bg-cream-100 border-8 rounded-lg shadow-sm mt-10 p-8">
+                    <img class="absolute left-0 top-0 w-24 -mt-10 -ml-8 transform rotate-45"
+                        src="/assets/images/floral_eve.png" />
+
+                    <img class="absolute right-0 top-0 w-24 -mt-10 -mr-8 flip-flower-top"
+                        src="/assets/images/floral_eve.png" />
+
+                    <h3 class="text-4xl animate-bounce text-center font-custom-style-script">Akad Nikah</h3>
+                    <div class="text-center">___________</div>
+                    <div class="flex flex-col gap-2 mt-4 text-sm">
+                        <div>
+                            <i class="fa fa-calendar mr-4"></i> <span x-text="weddingDay"></span>
+                        </div>
+                        <div>
+                            <i class="fa fa-clock mr-3"></i> 10.00 WIB
+                        </div>
+                        <div class="flex">
+                            <div><i class="fas fa-map-marker-alt mr-5"></i></div>
+                            <div>
+                                <strong>Kediaman Mempelai Putri</strong><br />
+                                <span>Jln Masjid Al-Mujahidin Kutadalom, RT 004/001 Kec. Gisting, Tanggamus</span> <br />
+                                <a href="javascript://" class="text-yellow-600">Lihat di Google Maps</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  END AKAD  -->
+                <div class="bg-white relative border-cream-300 bg-cream-100 border-8 rounded-lg shadow-sm mt-5 p-8">
+                    <h3 class="text-4xl animate-bounce text-center font-custom-style-script">Resepsi</h3>
+                    <div class="text-center">___________</div>
+                    <div class="flex flex-col gap-2 mt-4 text-sm">
+                        <div>
+                            <i class="fa fa-calendar mr-4"></i> <span x-text="weddingDay"></span>
+                        </div>
+                        <div>
+                            <i class="fa fa-clock mr-3"></i> 11.00 WIB
+                        </div>
+                        <div class="flex">
+                            <div><i class="fas fa-map-marker-alt mr-5"></i></div>
+                            <div>
+                                <strong>Kediaman Mempelai Putri</strong><br />
+                                <span>Jln Masjid Al-Mujahidin Kutadalom, RT 004/001 Kec. Gisting, Tanggamus</span> <br />
+                                <a :href="farahMap" target="_blank" class="text-yellow-600">Lihat di Google Maps</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  END RESEPSI -->
+
+                <!-- <div class="bg-white relative border-cream-300 bg-cream-100 border-8 rounded-lg shadow-sm mt-5 p-8">
+                    <img class="absolute left-0 bottom-0 w-24 -mb-14 -ml-4 transform -rotate-45"
+                        src="/assets/images/floral_eve.png" />
+
+                    <img class="absolute right-0 bottom-0 w-24 -mb-14 -mr-4 flip-flower-bottom"
+                        src="/assets/images/floral_eve.png" />
+
+                    <h3 class="text-4xl text-center font-custom-style-script animate-bounce">Unduh Mantu</h3>
+                    <div class="text-center">___________</div>
+                    <div class="flex flex-col gap-2 mt-4 text-sm">
+                        <div>
+                            <i class="fa fa-calendar mr-4"></i> Kamis, 21 Oktober 2021
+                        </div>
+                        <div>
+                            <i class="fa fa-clock mr-3"></i> 10.30 WIB
+                        </div>
+                        <div class="flex">
+                            <div><i class="fas fa-map-marker-alt mr-5"></i></div>
+                            <div>
+                                <strong>Kediaman Mempelai Putra</strong><br />
+                                <span>Desa Yukum Jaya, Jl Anggur Rumah Pertama kanan jalan, RT 04/05, Lampung Tengah</span>
+                                <br />
+                                <a :href="albertMap" target="_blank" class="text-yellow-600">Lihat di Google Maps</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!--  END Unduh Mantu  -->
+
+                <div id="Photo" class="pt-10">
+                    <div class="grid grid-cols-4 gap-3 mb-5">
+                        <div class="w-full border-black border-t-2 mt-3"></div>
+                        <div class="text-center col-span-2">OUR MOMENTS</div>
+                        <div class="w-full border-black border-t-2 mt-3"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-4 relative" x-data="Aksi.galleryPhotos()" x-init="initData()">
+                        <template x-for="(gallery, idx) in galleries" :key="idx">
+                            <div class="p-2 bg-white" x-show="idx === activeGallery"
+                                x-transition:enter="transition ease-out duration-300"
+                                x-transition:enter-start="opacity-0 transform scale-90"
+                                x-transition:enter-end="opacity-100 transform scale-100"
+                                x-transition:leave="transition ease-in duration-100"
+                                x-transition:leave-start="opacity-100 transform scale-100"
+                                x-transition:leave-end="opacity-0 transform scale-90"
+                            >
+                                <img x-bind:src="gallery" alt="Prewed" class="w-full h-auto">
+                            </div>
+                        </template>
+
+                        <!--  Prev / Next Arrow      -->
+                        <div class="absolute inset-0 flex">
+                            <div class="flex items-center justify-start w-1/2 cursor-pointer"
+                                x-on:click="doPrev()"
+                            >
+                                <button
+                                    class="bg-white text-gray-500 hover:text-gray-900 font-bold hover:shadow-lg rounded-full w-12 h-12 -ml-6"
+                                >
+                                    &#8592;
+                                </button>
+                            </div>
+                            <div class="flex items-center justify-end w-1/2 cursor-pointer"
+                                x-on:click="doNext()"
+                            >
+                                <button
+                                    class="bg-white text-gray-500 hover:text-gray-900 font-bold hover:shadow rounded-full w-12 h-12 -mr-6"
+                                >
+                                    &#8594;
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  END DIVIDER  -->
+
+                <div id="Location" class="pt-10">
+                    <div class="grid grid-cols-4 gap-3 mb-5">
+                        <div class="w-full border-black border-t-2 mt-3"></div>
+                        <div class="text-center col-span-2">LOCATION</div>
+                        <div class="w-full border-black border-t-2 mt-3"></div>
+                    </div>
+
+                    <div class="bg-white p-2">
+                        <!-- x-bind:src="farahMapEmbed" -->
+                        <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                            src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=-6.729029,110.721931+(Resepsi%20Farah%20Albert)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                            >
+                        </iframe>
+                    </div>
+
+                    <div class="w-full mt-4">
+                        <a :href="farahMap" target="_blank"
+                            class="text-white w-full bg-yellow-500 hover:shadow-md hover:bg-yellow-400 px-10 py-2 rounded-md text-md text-center block">
+                            Lokasi Resepsi
+                        </a>
+                    </div>
+                </div>
+                <!--  END DIVIDER  -->
+
+                <div class="mt-10">
+                    <div class="grid grid-cols-4 gap-3 mb-5">
+                        <div class="w-full border-black border-t-2 mt-3"></div>
+                        <div class="text-center col-span-2">Health Protocol</div>
+                        <div class="w-full border-black border-t-2 mt-3"></div>
+                    </div>
+
+                    <div class="text-sm text-justify">
+                        Acara ini diselenggarakan dengan tetap menjalankan protokol kesehatan yang harus dipatuhi demi
+                        mencegah penyebaran virus Covid-19. <br /> Tanpa mengurangi rasa hormat, para tamu undangan dihimbau
+                        untuk menggunakan masker, mencuci tangan dan selalu menjaga jarak.
+                    </div>
+
+                    <div class="my-4">
+                        <img class="w-full h-auto" src="/assets/images/protokol.png" alt="protokol" border="0">
+                    </div>
+
+                </div>
+                <!--  END DIVIDER  -->
+
+                <div class="text-center text-xs mt-4 opacity-80">
+                    <div>
+                        <span class="fa fa-music"></span> Beautiful in White x Canon in D (Piano Cover by Riyandi Kusuma)
+                    </div>
+                    <div class="italic mt-2">
+                        Made with <span class="fa fa-heart text-red-600"></span> by Farah & Albert
+                    </div>
+                </div>
+            </div>
+            <!--  End Card  -->
+        </div>
+        <!-- End Body -->
+    </div>
+
+
+    <div x-data="Aksi.welcomeModal()" x-init="initData()">
+        <!-- Popup -->
+        <div x-show="showModal"
+            x-transition:leave="transition ease-in duration-100"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            class="fixed z-10 inset-0 overflow-y-auto p-8 flex" aria-labelledby="modal-title" role="dialog"
+            aria-modal="true">
+            <div class="items-end h-screen justify-center pt-4 px-4 pb-20 text-center">
+                <div class="flex h-full fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity p-8" aria-hidden="true">
+
+                    <!-- This element is to trick the browser into centering the modal contents. -->
+                    <span class="hidden" aria-hidden="true">&#8203;</span>
+                    <div
+                        x-show="showModal"
+                        x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 transform scale-90"
+                        x-transition:enter-end="opacity-100 transform scale-100"
+                        x-transition:leave="transition ease-in duration-100"
+                        x-transition:leave-start="opacity-100 transform scale-100"
+                        x-transition:leave-end="opacity-0 transform scale-90"
+                        class="w-full lg:w-1/2 flex flex-col justify-between m-auto content-between bg-white rounded-lg text-left overflow-hidden shadow-xl border-cream-300 bg-cream-100 border-8">
+
+                        <div class="text-center px-4 py-4">
+                            <div class="">
+                                Dear <span class="capitalize font-bold text-lg" x-text="welcomeName"></span>,
+                                <br>
+                                You're invited to the wedding of
+                            </div>
+                            <div class="mt-6">
+                                <div class="font-custom-tangerine font-bold text-7xl text-cream-200 ">
+                                    Farah
+                                    <div class="animate-bounce my-2">&</div>
+                                    Albert
+                                </div>
+                                <br>
+                                <small class="text-xs opacity-70">*) Mohon maaf apabila ada kesalahan penulisan nama / gelar</small>
+                            </div>
+                        </div>
+
+                        <div class="border-gray-200 border-t px-4 py-3 flex justify-end gap-2">
+                            <button type="button" x-on:click="showModal = false; Aksi.playSong();" class="text-white w-3/5 mx-auto bg-cream-300 hover:shadow-md hover:bg-yellow-600 px-10 py-2 rounded-md text-md">Buka Undangan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script defer src="https://unpkg.com/alpinejs@3.2.4/dist/cdn.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/16.1.3/smooth-scroll.min.js" integrity="sha512-HYG9E+RmbXS7oy529Nk8byKFw5jqM3R1zzvoV2JnltsIGkK/AhZSzciYCNxDMOXEbYO9w6MJ6SpuYgm5PJPpeQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/action.js?v=002"></script>
 </body>
 </html>
