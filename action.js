@@ -9,6 +9,7 @@ Aksi.rootVariable = () => {
         weddingDate,
         calendarLink: 'https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=MGdodGhlMjllY3I0Yjg5dG12cmhwZGk2NW4gYWxiZXJ0c2VwdGlhd2FuMjRAbQ&tmsrc=albertseptiawan24%40gmail.com',
         albertMap: 'https://goo.gl/maps/KQyLhmtL5GR8dT379',
+        farahAddr: 'Jl. Kauman I, Margoyoso II, Margoyoso, Kec. Kalinyamatan, Kabupaten Jepara, Jawa Tengah 59462',
         farahMap: 'https://goo.gl/maps/48G2MGfu6354ZpQ69',
         farahMapEmbed: 'https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=-5.417732,%20104.736017+(Resepsi%20Farah%20Albert)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed'
     }
@@ -171,6 +172,17 @@ Aksi.galleryPhotos = () => {
             this.activeGallery = this.activeGallery === this.galleries.length - 1 ? 0 : this.activeGallery + 1
         }
 
+    }
+}
+
+Aksi.kadoDigital = () => {
+    return {
+        giftOpen: false,
+        account_mandiri: '1140015406872',
+        copyText(str) {
+            navigator.clipboard.writeText(str);
+            alert('Berhasil disalin: ' + str);
+        }
     }
 }
 

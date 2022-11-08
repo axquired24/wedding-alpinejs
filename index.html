@@ -37,7 +37,7 @@
         <a href="#Location" class="text-cream-100 hover:text-yellow-400">
             <i class="fas fa-map-marker-alt text-3xl"></i>
         </a>
-        <a href="#Greeting" class="text-cream-100 hover:text-yellow-400">
+        <a href="#Kado" class="text-cream-100 hover:text-yellow-400">
             <i class="fas fa-comments text-3xl"></i>
         </a>
     </div>
@@ -161,7 +161,7 @@
                             <div><i class="fas fa-map-marker-alt mr-5"></i></div>
                             <div>
                                 <strong>Kediaman Mempelai Putri</strong><br />
-                                <span>Jln Masjid Al-Mujahidin Kutadalom, RT 004/001 Kec. Gisting, Tanggamus</span> <br />
+                                <span x-text="farahAddr"></span> <br />
                                 <a href="javascript://" class="text-yellow-600">Lihat di Google Maps</a>
                             </div>
                         </div>
@@ -182,7 +182,7 @@
                             <div><i class="fas fa-map-marker-alt mr-5"></i></div>
                             <div>
                                 <strong>Kediaman Mempelai Putri</strong><br />
-                                <span>Jln Masjid Al-Mujahidin Kutadalom, RT 004/001 Kec. Gisting, Tanggamus</span> <br />
+                                <span x-text="farahAddr"></span> <br />
                                 <a :href="farahMap" target="_blank" class="text-yellow-600">Lihat di Google Maps</a>
                             </div>
                         </div>
@@ -308,6 +308,26 @@
 
                 </div>
                 <!--  END DIVIDER  -->
+
+                <div id="Kado" class="mt-10" x-data="Aksi.kadoDigital()">
+                    <div class="grid grid-cols-4 gap-3 mb-5">
+                        <div class="w-full border-black border-t-2 mt-3"></div>
+                        <div class="text-center col-span-2">Kado Digital 🎁</div>
+                        <div class="w-full border-black border-t-2 mt-3"></div>
+                    </div>
+                    <div x-show="!giftOpen" class="text-sm text-justify">
+                        Kami menerima kado pernikahan dalam bentuk digital
+                    </div>
+
+                    <div x-show="true" class="mt-4 p-4 flex flex-col justify-center items-center gap-4 text-center border-2 border-cream-300 rounded-md">
+                        <div>Kado Digital dapat dikirimkan melalui: </div>
+                        <img src="/assets/images/banks/mandiri.svg" alt="Mandiri" class="w-1/2">
+                        Atas Nama: Eva Farahdiba Meiza
+                        <div class="flex gap-2 bg-yellow-200 rounded-md p-2">
+                            <span x-text="account_mandiri" class="font-bold">bank_no</span>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="text-center text-xs mt-4 opacity-80">
                     <div>
